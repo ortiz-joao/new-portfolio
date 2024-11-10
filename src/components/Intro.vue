@@ -5,7 +5,7 @@
 </template>
 <style scoped>
 .intro {
-	height: 100vh;
+	height: 120vh;
 	pointer-events: none;
 	z-index: -1;
 }

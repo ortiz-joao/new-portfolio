@@ -1,28 +1,28 @@
 <template>
-	<section style="height: 100vh">
-		<article>
+	<section style="height: 80vh">
+		<HiddenSVG src="/src/assets/svg/ornament_v.svg" style="height: 40vh;"/>
+		<article class="about">
 			<h2>About me</h2>
 			<p>
 				Passionate and Frontend developer with 5+ years of experience. Specialized in Vue.js, HTML5, CSS3, and JavaScript (ES6+), with strong problem solving skills and, understanding of responsive design and user-centered practices.
 			</p>
-			<transition name="slide" mode="out-in">
-			</transition>
-			<JobExperience :key="current" :experience="experiences[current]"/>
-		</article>
-		<div>
-			<h2>Experience</h2>
-			<div  class="experience"v-for="({company, start, end}, idx) in experiences" :key="idx" @click="current = idx">
-				<p>{{company}}</p>
-				<p>{{start}}</p>
-				<p>{{end}}</p>
-				<div class="background"></div>
-			</div>
+			<TransitionGroup name="slide" mode="out-in">
+				<JobExperience v-for="(experience, idx) in experiences" v-show="current === idx" :experience="experience" ref="jobExperience"/>
+			</TransitionGroup>
+			</article>
+		<div style="margin-left: auto;padding-right: 64px; position: relative; height: fit-content">
+			<h2 style="color: #d26913; font-size: 28px; margin: 0;margin-bottom: 8px;">Job Experiences</h2>
+			<Experience v-for="(exp, idx) in experiences" :experience="exp" :key="idx" @click="current = idx">
+			</Experience>
+			<HiddenSVG src="/src/assets/svg/ornament_bottom-left.svg" style="position: absolute; bottom:-30%;right: 0; height: 250px" svgStyle="transform: scaleX(-1);"/>
 		</div>
 	</section>
 </template>
 <script setup>
 import { ref } from 'vue'
-import JobExperience from '../components/JobExperience.vue';
+import JobExperience from './JobExperience.vue';
+import Experience from './Experience.vue';
+import HiddenSVG from './HiddenSVG.vue';
 
 const experiences = ref([
 	{
@@ -105,35 +105,49 @@ const experiences = ref([
 ])
 
 const current = ref(0)
+
 </script>
 <style scoped>
-.experience {
-	display: grid;
-	grid-template-columns: repeat(3, 120px); 
-	margin: 0;
+section {
+	display: flex;
+	flex-direction: row;
 	position: relative;
-	overflow: hidden;
-	font-size: 22px;
-	height: 48px;
-	border-top: solid 1px white;
-	width: 360px;
-	cursor: pointer;
 }
 
-.experience:last-of-type{
-	border-bottom: solid 1px white;
+.about {
+	width: 720px;
+	padding-left: 24px;
+	position: relative;
+	box-sizing: border-box;
 }
 
- .background {
-	height: 64px;
-	width: 100%;
-	position: absolute;
-	top: 64px;
-	transition: all 0.3s ease-in-out;
-	background-color: aliceblue;
-	z-index: -1;
+.about h2 {
+	font-size:36px;
+	color: #d26913;
+	margin: 0;
+	margin-bottom: 8px;
 }
-.experience:hover .background {
-	top: 0;
+
+.about p {
+	font-size: 20px;
 }
+
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.2s ease-in;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.slide-enter-to,
+.slide-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}
+
 </style>

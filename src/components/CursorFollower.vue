@@ -1,6 +1,7 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
 
+const svgRef = useTemplateRef('svg')
 
 const cursorX = ref(0);
 const cursorY = ref(0);
@@ -31,15 +32,17 @@ onUnmounted(() => {
   window.removeEventListener('mousemove', updateCursorPosition);
 });
 
+defineExpose(svgRef)
+
 </script>
 
 <template>
-    <svg
+    <img
+    ref="svg"
+    src="@/assets/svg/circle.svg"
+      style="height: 100px;"
       :style="{ transform: `translate(${svgX}px, ${svgY}px)` }"
-      class="cursor-follower"
-       height="100" width="100" xmlns="http://www.w3.org/2000/svg">
-    <circle r="30" cx="50" cy="50" fill="transparent" stroke="#a1d30d" stroke-width="1" />
-    </svg>
+      class="cursor-follower"/>
 </template>
 
 <style scoped>

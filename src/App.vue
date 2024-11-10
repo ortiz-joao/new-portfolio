@@ -37,6 +37,21 @@ provide('lenis', lenis)
 </template>
 
 <style>
+* {
+  box-sizing: border-box !important;
+}
+
+
+@font-face {
+  font-family: 'oldLondon';
+  src: url('@/assets/fonts/OldLondon.ttf')
+}
+
+@font-face {
+  font-family: 'durer';
+  src: url('@/assets/fonts/IFDurer-Regular.ttf')
+}
+
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -58,10 +73,11 @@ html.lenis, html.lenis body {
 }
 
 body {
-  width: 100vw;
+  width: 100%;
   background-color: black;
   color: #a1d30d;
   margin: 0;
+  font-family: 'durer';
 }
 
 .lenis {
