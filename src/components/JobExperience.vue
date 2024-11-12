@@ -6,10 +6,7 @@
 			{{task}}
 		</li>
 	</ul>
-	<div style="display: flex; flex-direction: row; align-items: center">
-		<h3>Technologies</h3>
-		<HiddenSVG src="/src/assets/svg/silver.svg" style="height: 64px;" svgStyle="transform: scale(1.2)"/>
-	</div>
+		<h3 style="border-bottom: solid 1px; width: fit-content;">Technologies</h3>
 	
 	<div style="display: flex; flex-wrap: wrap;">
 		<template v-for="tech in experience.stack" :key="tech">
@@ -28,6 +25,8 @@ const props = defineProps(['experience'])
 <style scoped>
 h2 { 
 	color: #d26913;
+	border-bottom: solid 1px;
+	width: fit-content;
 }
 h3 {
 	display: inline-block;
@@ -35,7 +34,8 @@ h3 {
 	margin-bottom: 8px;
 }
 .container {
-	position: absolute
+	position: absolute;
+	padding-right: 24px;	
 }
 li {
 	font-size: 18px;

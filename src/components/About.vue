@@ -1,5 +1,5 @@
 <template>
-	<section style="height: 80vh">
+	<section style="height: 100vh">
 		<HiddenSVG src="/src/assets/svg/ornament_v.svg" style="height: 40vh;"/>
 		<article class="about">
 			<h2>About me</h2>
@@ -7,11 +7,13 @@
 				Passionate and Frontend developer with 5+ years of experience. Specialized in Vue.js, HTML5, CSS3, and JavaScript (ES6+), with strong problem solving skills and, understanding of responsive design and user-centered practices.
 			</p>
 			<TransitionGroup name="slide" mode="out-in">
-				<JobExperience v-for="(experience, idx) in experiences" v-show="current === idx" :experience="experience" ref="jobExperience"/>
+				<template v-for="(experience, idx) in experiences" :key="idx">
+				<JobExperience  v-if="current === idx" :experience="experience"/>
+				</template>
 			</TransitionGroup>
 			</article>
-		<div style="margin-left: auto;padding-right: 64px; position: relative; height: fit-content">
-			<h2 style="color: #d26913; font-size: 28px; margin: 0;margin-bottom: 8px;">Job Experiences</h2>
+		<div style="margin-left: auto;padding-right: 64px; position: relative; height: fit-content;">
+			<h2 style="color: #d26913; font-size: 28px; margin: 0;margin-bottom: 8px; border-bottom: solid 2px #d26913;">Job Experiences</h2>
 			<Experience v-for="(exp, idx) in experiences" :experience="exp" :key="idx" @click="current = idx">
 			</Experience>
 			<HiddenSVG src="/src/assets/svg/ornament_bottom-left.svg" style="position: absolute; bottom:-30%;right: 0; height: 250px" svgStyle="transform: scaleX(-1);"/>
@@ -19,7 +21,7 @@
 	</section>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref,TransitionGroup } from 'vue'
 import JobExperience from './JobExperience.vue';
 import Experience from './Experience.vue';
 import HiddenSVG from './HiddenSVG.vue';
@@ -116,9 +118,11 @@ section {
 
 .about {
 	width: 720px;
-	padding-left: 24px;
+	padding: 24px;
 	position: relative;
 	box-sizing: border-box;
+	border: solid 1px #5c6f46;
+	overflow: hidden;
 }
 
 .about h2 {
@@ -126,6 +130,7 @@ section {
 	color: #d26913;
 	margin: 0;
 	margin-bottom: 8px;
+	border-bottom: solid 2px;
 }
 
 .about p {
@@ -135,7 +140,7 @@ section {
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 0.2s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 .slide-enter-from,

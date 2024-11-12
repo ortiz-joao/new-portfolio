@@ -24,15 +24,11 @@ defineProps(['experience'])
 	overflow: hidden;
 	font-size: 24px;
 	height: 64px;
-	border-top: solid 1px #d26913;
+	border-bottom: solid 1px #d26913;
 	width: 400px;
 	cursor: pointer;
     padding: 0 8px;
 	color: #d26913;
-}
-
-.experience:last-of-type{
-	border-bottom: solid 1px #d26913;
 }
 
 .background {
