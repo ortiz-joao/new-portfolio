@@ -1,6 +1,6 @@
 <template>
   <TresCanvas window-size preset="realistic">
-    <TresPerspectiveCamera><TresPerspectiveCamera :position=[rotation,2,4] /> <TresDirectionalLight :position="[-10, 1, 5]" :intensity="1.1" cast-shadow /><Suspense><GLTFModel path="/angel.glb" /></Suspense></TresPerspectiveCamera>
+    <TresPerspectiveCamera><TresPerspectiveCamera :position=[rotation,2,4] /> <TresDirectionalLight :position="[-10, 1, 5]" :intensity="0.5" cast-shadow /><Suspense><GLTFModel path="/angel.glb" /></Suspense></TresPerspectiveCamera>
   </TresCanvas>
 </template>
 <script setup>

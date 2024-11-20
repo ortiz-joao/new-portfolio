@@ -3,8 +3,10 @@ import LazyTheWelcome from './components/TheWelcome.vue';
 import Intro from './components/Intro.vue'
 import Navbar from './components/Navbar.vue'
 import About from './components/About.vue'
-import Lenis from 'lenis'
+import Works from './components/Works.vue'
+import Lenis from 'lenis' 
 import Cursor from './components/CursorFollower.vue'
+import Contact from './components/Contact.vue'
 import { provide } from 'vue';
 
 const lenis = new Lenis();
@@ -27,10 +29,14 @@ provide('lenis', lenis)
   <main >
     <Intro/>
     <About/>
+    <Works />
     <Suspense>
-      <LazyTheWelcome style="z-index: -1"/>
+      <LazyTheWelcome style="z-index: -10"/>
     </Suspense>
   </main>
+  <footer>
+    <Contact />
+  </footer>
 </div>
   
   

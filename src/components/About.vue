@@ -1,9 +1,22 @@
 <template>
-	<section style="height: 100vh">
+	<div style="display: flex;align-items: center">
+		<img src="/src/assets/svg/leaves.svg" style="height: 64px;">
+		<div style="width: 100%; border-bottom: solid 2px #5c6f46;margin-right: 8px"/>
+		<img style="width: 240px" src="/src/assets/svg/diamond.svg">	
+		<div style="width: 100%; border-bottom: solid 2px #5c6f46; margin-left: 8px"/>
+		<img src="/src/assets/svg/leaves.svg" style="height: 64px;transform: scaleX(-1);">
+	</div>
+	<div style="padding: 16px;">
+		<div style="display: flex; align-items: center; justify-items: center; margin: 32px auto;width: fit-content;">
+			<img src="/src/assets/svg/leaves2.svg" style="height: 48px;">
+			<h2>About me</h2>
+			<img src="/src/assets/svg/leaves2.svg" style="height: 48px; transform: scaleX(-1)">
+		</div>
+	</div>
+	<section style="height: 90vh">
 		<HiddenSVG src="/src/assets/svg/ornament_v.svg" style="height: 40vh;"/>
 		<article class="about">
-			<h2>About me</h2>
-			<p>
+			<p style="font-size: 22px;">
 				Passionate and Frontend developer with 5+ years of experience. Specialized in Vue.js, HTML5, CSS3, and JavaScript (ES6+), with strong problem solving skills and, understanding of responsive design and user-centered practices.
 			</p>
 			<TransitionGroup name="slide" mode="out-in">
@@ -13,7 +26,7 @@
 			</TransitionGroup>
 			</article>
 		<div style="margin-left: auto;padding-right: 64px; position: relative; height: fit-content;">
-			<h2 style="color: #d26913; font-size: 28px; margin: 0;margin-bottom: 8px; border-bottom: solid 2px #d26913;">Job Experiences</h2>
+			<h2 style="color: #d26913; font-size: 28px; margin: 0;margin-top: 16px; border-bottom: solid 2px #d26913;">Work Experiences</h2>
 			<Experience v-for="(exp, idx) in experiences" :experience="exp" :key="idx" @click="current = idx">
 			</Experience>
 			<HiddenSVG src="/src/assets/svg/ornament_bottom-left.svg" style="position: absolute; bottom:-30%;right: 0; height: 250px" svgStyle="transform: scaleX(-1);"/>
@@ -118,19 +131,22 @@ section {
 
 .about {
 	width: 720px;
-	padding: 24px;
+	padding: 0 24px;
 	position: relative;
 	box-sizing: border-box;
-	border: solid 1px #5c6f46;
 	overflow: hidden;
 }
 
-.about h2 {
-	font-size:36px;
+header {
+	display: flex;
+	flex-direction: row;
+
+}
+
+h2 {
+	font-size:48px;
 	color: #d26913;
-	margin: 0;
-	margin-bottom: 8px;
-	border-bottom: solid 2px;
+	font-family: oldLondon
 }
 
 .about p {

@@ -1,12 +1,17 @@
 <template>
 	<div class="container">
-	<h2>{{experience.company}}</h2>
+	<div style="display: flex; align-items: center; justify-content: center;">
+		<img style="height: 28px; margin-right: 8px" src="/src/assets/svg//viking.svg"/>
+		<h2>{{experience.company}}</h2>
+		<img style="height: 28px; margin-left: 8px" src="/src/assets/svg//viking.svg"/>
+	</div>
+	
 	<ul>
 		<li v-for="(task, idx) in experience.tasks" :key="idx">
 			{{task}}
 		</li>
 	</ul>
-		<h3 style="border-bottom: solid 1px; width: fit-content;">Technologies</h3>
+		<h3 style="text-align: center;width: 100%;padding: 16px">Technologies</h3>
 	
 	<div style="display: flex; flex-wrap: wrap;">
 		<template v-for="tech in experience.stack" :key="tech">
@@ -25,7 +30,6 @@ const props = defineProps(['experience'])
 <style scoped>
 h2 { 
 	color: #d26913;
-	border-bottom: solid 1px;
 	width: fit-content;
 }
 h3 {

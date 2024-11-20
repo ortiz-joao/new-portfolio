@@ -43,5 +43,5 @@ useIntersectionObserver(svgRef, svgVisible, 1)
 }
 
 .on-visible-animation {
-	transform: translateY(100%)
+	transform: translateY(100%);
 }</style>
