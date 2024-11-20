@@ -8,6 +8,7 @@ import { templateCompilerOptions } from '@tresjs/core'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: 'new-potfolio',
   plugins: [
     vue({
       ...templateCompilerOptions
